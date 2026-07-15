@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>汇报智能体</title>
+  <link rel="stylesheet" href="./style.css" />
+  <script src="./app.js" defer></script>
+</head>
+
+<body>
+  <div class="app-container">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">AI</div>
+        <div class="brand-copy">
+          <div class="brand-name">汇报智能体</div>
+          <div class="brand-subtitle">问答与PPT制作</div>
+        </div>
+      </div>
+
+      <button class="new-chat-btn" type="button" id="newChatBtn">
+        <span class="plus-icon">+</span>
+        <span>新建对话</span>
+      </button>
+
+      <div class="history-section">
+        <div class="section-title">
+          <span>历史对话</span>
+        </div>
+        <div class="history-list" id="historyList">
+          <div class="history-empty">暂无对话记录</div>
+        </div>
+      </div>
+
+      <button class="usage-entry" id="openUsageTip" type="button">
+        <div class="usage-left">
+          <span>使用提示</span>
+        </div>
+        <span class="arrow">›</span>
+      </button>
+    </aside>
+
+    <main class="main-content">
+      <div class="main-inner">
+        <header class="conversation-header">
+          <p class="eyebrow" id="modeLabel">通用问答</p>
+          <h1 id="conversationTitle">AI 汇报助手</h1>
+          <p class="subtitle" id="conversationSubtitle">
+            可进行通用问答，也可以根据材料生成可下载的PPT文件。
+          </p>
+        </header>
+
+        <div class="chat-area" id="chatArea" aria-live="polite"></div>
+
+        <section class="input-card">
+          <div class="mode-switch" role="tablist" aria-label="对话模式">
+            <button class="mode-btn active" type="button" data-mode="chat">问答</button>
+            <button class="mode-btn" type="button" data-mode="ppt">生成PPT</button>
+          </div>
+
+          <textarea
+            class="report-input"
+            id="reportInput"
+            placeholder="输入问题、工作内容或PPT制作要求"
+          ></textarea>
+
+          <div class="input-actions">
+            <label class="upload-plus-btn" for="fileUpload" title="上传附件">
+              +
+            </label>
+
+            <input
+              id="fileUpload"
+              type="file"
+              multiple
+              accept=".txt,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.webp"
+              hidden
+            />
+
+            <button class="send-btn" id="sendBtn" type="button" title="发送">
+              →
+            </button>
+          </div>
+
+          <div class="file-list" id="fileList"></div>
+        </section>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal-mask" id="usageModal" hidden>
+    <div class="usage-modal" role="dialog" aria-modal="true" aria-labelledby="usageTitle">
+      <h2 id="usageTitle">使用提示</h2>
+
+      <div class="modal-divider"></div>
+
+      <div class="usage-content">
+        <p><span class="num">1.</span>使用前请了解并遵守公司人工智能使用相关要求。</p>
+        <p><span class="num">2.</span>本服务会调用第三方大模型，请谨慎提交涉及隐私、保密或敏感信息的内容。</p>
+        <p><span class="num">3.</span>上传附件当前仅记录文件名，暂未解析附件正文；如需模型理解附件，请把关键内容粘贴到输入框。</p>
+        <p><span class="num">4.</span>AI生成内容可能存在不准确、遗漏或表达不当，正式使用前请结合业务实际复核。</p>
+        <p><span class="num">5.</span>PPT生成功能会根据当前对话材料生成可下载的初稿文件，仍需人工审阅和美化。</p>
+      </div>
+
+      <button class="confirm-btn" id="closeUsageTip" type="button">
+        已知晓
+      </button>
+    </div>
+  </div>
+</body>
+</html>
