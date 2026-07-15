@@ -1573,12 +1573,11 @@ if (require.main === module) {
   startServer();
 }
 
-module.exports = {
-  app,
-  buildPptx,
-  buildLenovoPptxFromTemplate,
-  buildPptxFromTemplate,
-  buildLocalPptDeck,
-  parseReportForTemplate,
-  startServer
-};
+module.exports = app;
+module.exports.app = app;
+module.exports.buildPptx = buildPptx;
+module.exports.buildLenovoPptxFromTemplate = buildLenovoPptxFromTemplate;
+module.exports.buildPptxFromTemplate = buildPptxFromTemplate;
+module.exports.buildLocalPptDeck = buildLocalPptDeck;
+module.exports.parseReportForTemplate = parseReportForTemplate;
+module.exports.startServer = startServer;
